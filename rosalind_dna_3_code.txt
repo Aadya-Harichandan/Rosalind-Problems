@@ -1,0 +1,18 @@
+str = input("Enter your DNA code: ").strip()
+a, g, c, t = 0, 0, 0, 0
+i = 0
+
+while i < len(str):
+    if str[i] == 'A':
+        a += 1
+    elif str[i] == 'G':
+        g += 1
+    elif str[i] == 'C':
+        c += 1
+    elif str[i] == 'T':
+        t += 1
+    else:
+        print(f"Invalid character '{str[i]}' found. Skipping it.")
+    i += 1
+
+print(a, c, g, t)

@@ -1,0 +1,3 @@
+dna = input("Enter your DNA code: ").strip()
+rna=dna.replace('T','U')
+print(rna)

@@ -1,0 +1,16 @@
+nos=input("Enter your numbers: ")
+no=nos.split(" ")
+i=3
+fn1=1
+fn2=1
+n=no[0]
+k=no[1]
+if int(n)<=2:
+    print("1")
+else:
+    while i <= int(n):
+        fn = fn1 + (int(k) * fn2)
+        fn2 = fn1
+        fn1 = fn
+        i += 1
+    print(fn)

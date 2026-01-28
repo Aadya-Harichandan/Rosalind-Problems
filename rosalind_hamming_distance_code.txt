@@ -1,0 +1,12 @@
+str1=input("Enter string 1: ")
+str2=input("Enter string 2: ")
+i=0
+n=0
+if len(str1)==len(str2):
+    while i<len(str1):
+        if str1[i]!=str2[i]:
+            n += 1
+        i += 1
+    print(n)
+else:
+    print("Not same length")

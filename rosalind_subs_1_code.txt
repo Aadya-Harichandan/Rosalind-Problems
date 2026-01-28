@@ -1,0 +1,13 @@
+dna = input("Enter a DNA string: ").upper()
+find = input("Enter a DNA code you want to find: ").upper()
+n=len(find)
+occ=''
+i=0
+while i<len(dna)-n:
+    if dna[i:i+n]==find:
+        occ +=' '+str(i+1)
+        i +=1
+    else:
+        i +=1
+
+print(occ.strip())

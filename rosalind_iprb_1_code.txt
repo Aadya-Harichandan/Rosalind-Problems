@@ -1,0 +1,15 @@
+num=input("Enter 3 numbers: ")
+nums=num.split()
+
+k=float(nums[0])
+m=float(nums[1])
+n=float(nums[2])
+tt=k+m+n
+t=tt*(tt-1)/2
+kk=(k*(k-1))/(2*t)
+mk=(k*m)/t
+mm=0.75*((m*(m-1))/(2*t))
+kn=(k*n)/t
+mn=0.5*(m*n)/t
+nn=(n*(n-1))/(2*t)
+print(kk+mk+mm+kn+mn)
