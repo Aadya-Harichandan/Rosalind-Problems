@@ -1,0 +1,41 @@
+ucp = 0
+uname = ''
+while True:
+    dna = []
+    cc = 0
+
+    dna_name = input("Enter a DNA name: ")
+    if dna_name.lower() == "stop":
+        break
+
+    while True:
+        try:
+            dnaline = input("Enter a DNA line (press Enter to stop): ")
+            if dnaline.strip() == "":
+                break
+            dna.append(dnaline)
+        except EOFError:
+            break
+
+
+    string = ''.join(dna)
+
+
+    for char in string:
+        if char == 'C' or char == 'G':
+            cc += 1
+
+
+    if len(string) > 0:
+        cp = (cc / len(string)) * 100
+    else:
+        cp = 0
+
+
+    if cp > ucp:
+        ucp = cp
+        uname = dna_name
+
+
+print(uname)
+print(ucp)

@@ -1,0 +1,70 @@
+gen_code = {
+    "UUU": "F", "UUC": "F",  # Phenylalanine
+    "UUA": "L", "UUG": "L",  # Leucine
+    "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",  # Serine
+    "UAU": "Y", "UAC": "Y",  # Tyrosine
+    "UAA": "*", "UAG": "*", "UGA": "*",  # Stop codons
+    "UGU": "C", "UGC": "C",  # Cysteine
+    "UGG": "W",  # Tryptophan
+    "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",  # Leucine
+    "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",  # Proline
+    "CAU": "H", "CAC": "H",  # Histidine
+    "CAA": "Q", "CAG": "Q",  # Glutamine
+    "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",  # Arginine
+    "AUU": "I", "AUC": "I", "AUA": "I",  # Isoleucine
+    "AUG": "M",  # Methionine (Start)
+    "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",  # Threonine
+    "AAU": "N", "AAC": "N",  # Asparagine
+    "AAA": "K", "AAG": "K",  # Lysine
+    "AGU": "S", "AGC": "S",  # Serine
+    "AGA": "R", "AGG": "R",  # Arginine
+    "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",  # Valine
+    "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",  # Alanine
+    "GAU": "D", "GAC": "D",  # Aspartic acid
+    "GAA": "E", "GAG": "E",  # Glutamic acid
+    "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"  # Glycine
+}
+print("Enter your DNA Sequence below: ")
+def find_orfs(rna):
+    orf_list = []
+    for frame in range(3):
+        for j in range(frame, len(rna) - 2, 3):
+            if rna[j:j + 3] == "AUG":
+                norf = []
+                for k in range(j, len(rna) - 2, 3):
+                    codon = rna[k:k + 3]
+                    aa = gen_code.get(codon, "x")
+                    if aa == "*":
+                        orf_list.append("".join(norf))
+                        break
+                    norf.append(aa)
+    return orf_list
+
+def reverse_complement(seq):
+    complement = {'A': 'U', 'U': 'A', 'C': 'G', 'G': 'C'}
+    return "".join(complement[base] for base in reversed(seq))
+
+def find_reverse_orfs(rna):
+    rev_rna = reverse_complement(rna)
+    return find_orfs(rev_rna)
+
+input_lines = []
+sdna=''
+while True:
+    dna = input().strip().upper()
+    if dna == "":
+        break
+    input_lines.append(dna)
+single_line_input = " ".join(input_lines)
+
+for i in range(0, len(single_line_input)):
+    if single_line_input[i] == " ":
+        continue
+    else:
+        sdna+=single_line_input[i]
+
+rna = sdna.replace("T", "U")
+orfs=find_reverse_orfs(rna)+find_orfs(rna)
+u_orfs=set(orfs)
+for item in u_orfs:
+    print(item)

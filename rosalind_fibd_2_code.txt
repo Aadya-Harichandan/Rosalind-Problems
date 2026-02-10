@@ -1,0 +1,13 @@
+n=int(input("Enter no. of months: "))
+m=int(input("Enter lifespan in months: "))
+
+tr = [0] * m  # initialising no. of elements
+tr[0] = 1  # base case
+def morfibo(tr):
+    return sum(tr)
+
+
+for i in range(1, n + 1):
+    print(f"Month {i}: {morfibo(tr)} rabbits")
+    br = sum(tr[1:])
+    tr = [br] + tr[:-1]

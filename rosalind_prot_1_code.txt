@@ -1,0 +1,40 @@
+gen_code = {
+    "UUU": "F", "UUC": "F",  # Phenylalanine
+    "UUA": "L", "UUG": "L",  # Leucine
+    "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",  # Serine
+    "UAU": "Y", "UAC": "Y",  # Tyrosine
+    "UAA": "Stop", "UAG": "Stop", "UGA": "Stop",  # Stop codons
+    "UGU": "C", "UGC": "C",  # Cysteine
+    "UGG": "W",  # Tryptophan
+    "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",  # Leucine
+    "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",  # Proline
+    "CAU": "H", "CAC": "H",  # Histidine
+    "CAA": "Q", "CAG": "Q",  # Glutamine
+    "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",  # Arginine
+    "AUU": "I", "AUC": "I", "AUA": "I",  # Isoleucine
+    "AUG": "M",  # Methionine (Start)
+    "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",  # Threonine
+    "AAU": "N", "AAC": "N",  # Asparagine
+    "AAA": "K", "AAG": "K",  # Lysine
+    "AGU": "S", "AGC": "S",  # Serine
+    "AGA": "R", "AGG": "R",  # Arginine
+    "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",  # Valine
+    "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",  # Alanine
+    "GAU": "D", "GAC": "D",  # Aspartic acid
+    "GAA": "E", "GAG": "E",  # Glutamic acid
+    "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"   # Glycine
+}
+pc=''
+
+codon=''
+rna=input("Enter the RNA sequence: ").strip()
+for i in range(len(rna)):
+    codon += rna[i]
+    if (i+1)%3==0:
+        if gen_code[codon]=='Stop':
+            break
+        else:
+            pc += gen_code[codon]
+            codon = ''
+
+print(pc)

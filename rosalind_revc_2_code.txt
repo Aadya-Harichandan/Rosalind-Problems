@@ -1,0 +1,20 @@
+dna = input("Enter your DNA code: ").strip()
+i,j=0,0
+rdna=''
+cdna=''
+while i < len(dna):
+    rdna= rdna + dna[len(dna)-i-1]
+    i +=1
+
+
+while j < len(dna):
+    if rdna[j] == 'A':
+        cdna= cdna + 'T'
+    elif rdna[j] == 'T':
+        cdna= cdna + 'A'
+    elif rdna[j] == 'G':
+        cdna= cdna + 'C'
+    elif rdna[j] == 'C':
+        cdna= cdna + 'G'
+    j +=1
+print(cdna)
