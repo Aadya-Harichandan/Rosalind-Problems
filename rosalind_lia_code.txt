@@ -1,0 +1,15 @@
+import math
+from math import comb
+
+s=input()
+values=s.split()
+k=int(values[0])
+n=int(values[1])
+o=2**k
+p=1
+for i in range(n):
+  a= ((0.75)**(o-i))
+  b=((0.25)**i)
+  c=(math.comb(o,i))
+  p -= (a*b*c)
+print(p)
